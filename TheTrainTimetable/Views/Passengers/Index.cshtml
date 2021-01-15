@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TheTrainTimetable.Models.Passenger>
+
+@{
+    ViewBag.Title = "Passengers";
+}
+
+<h3>Below you can Create, Edit, and Delete as well as see data currently in the database for Passengers</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PassengerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreBookedTicket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PassengerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreBookedTicket)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PassengeriD }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PassengeriD }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PassengeriD })
+        </td>
+    </tr>
+}
+
+</table>

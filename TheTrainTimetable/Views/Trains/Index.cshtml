@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TheTrainTimetable.Models.Train>
+
+@{
+    ViewBag.Title = "Welcome to the Train Page";
+}
+
+<h3>Below you can Create, Edit, and Delete as well as see data currently in the database for Trains</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainCapcity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainRunningToday)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainCapcity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainRunningToday)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TrainiD }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TrainiD }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TrainiD })
+        </td>
+    </tr>
+}
+
+</table>

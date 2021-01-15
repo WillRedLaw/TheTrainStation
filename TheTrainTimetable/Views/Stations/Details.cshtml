@@ -1,0 +1,50 @@
+﻿@model TheTrainTimetable.Models.Station
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Station</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NorthBound)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NorthBound)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SouthBound)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SouthBound)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StationiD }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search for Trains by name</h2>
+
+<div class= "col-md-10">
+    <input type="text" id="TrainName" size="20" />
+    <input type="submit" name="SearchButton" id=" SearchButton" value ="Search For Train" />
+</div>
+
+<br/>
+
+<div id="SearchProcessing">
+    <p> Searching Database.<img src="~/Content/ajax-loader.gif" height="50" /></p>
+</div>
+
+<br />
+
+<div id="SearchResult"></div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#SearchProcessing").hide();
+            $("#SearchButton").onClick(function () {
+                search();
+            });
+        });
+
+        function search(){
+            $("#SearchResult").empty();
+            $("#SearchProessing").show();
+            var TrainName = $("#TrainName").val();
+            var url = "../api/Trains/" + TrainName;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType = "json",
+                success: function (resp) {
+                    $("#SearchProcessing").hide();
+                    $("<h3> Search Results: </h3>").appendTo("#SearchResult");
+                    $("#SearchResult").append("<p>Train Name: " + resp.TrainName +"<br/>Capcity: " +resp.TrainCapcity + "<br/>");
+                }
+            })
+
+        }
+    </script>
+    }
